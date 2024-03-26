@@ -13,7 +13,7 @@ fi
 git_sha=$(git rev-parse --short HEAD)
 
 docker buildx build \
-  -t saladtechnologies/sdnext:latest \
+  -t saladtechnologies/sdnext:base \
   --platform linux/amd64 \
   --output type=docker \
   --provenance false \
@@ -23,8 +23,8 @@ docker buildx build \
 docker tag saladtechnologies/sdnext:latest saladtechnologies/sdnext:$git_sha
 
 if [[ $push == true ]]; then
-  echo "Pushing saladtechnologies/sdnext:latest"
-  docker push saladtechnologies/sdnext:latest
+  echo "Pushing saladtechnologies/sdnext:base"
+  docker push saladtechnologies/sdnext:base
 
   echo "Pushing saladtechnologies/sdnext:$git_sha"
   docker push saladtechnologies/sdnext:$git_sha
