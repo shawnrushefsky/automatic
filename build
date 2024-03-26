@@ -20,7 +20,7 @@ docker buildx build \
   --build-arg GIT_SHA=$git_sha \
   .
 
-docker tag saladtechnologies/sdnext:latest saladtechnologies/sdnext:$git_sha
+docker tag saladtechnologies/sdnext:base saladtechnologies/sdnext:$git_sha
 
 if [[ $push == true ]]; then
   echo "Pushing saladtechnologies/sdnext:base"
