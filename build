@@ -10,7 +10,10 @@ else
   push=false
 fi
 
-git_sha=$(git rev-parse --short HEAD)
+git fetch --all
+full_sha=$(git merge-base master upstream/master)
+git_sha=$(git rev-parse --short $full_sha)
+echo "Building saladtechnologies/sdnext:$git_sha"
 
 docker buildx build \
   -t saladtechnologies/sdnext:base \
